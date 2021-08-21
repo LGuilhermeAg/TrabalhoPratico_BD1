@@ -1,5 +1,4 @@
-------------- Sistema de Gerenciamento Web -------------
---------- Trabalho Prático de Banco de Dados 1 ---------
+Sistema de Gerenciamento Web - Trabalho Prático de Banco de Dados 1 
 Desenvolvido por Luís Guilherme Lopes Aguiar - 19.1.8025
 --------------------------------------------------------
 Neste projeto é desenvolvido um protótipo de produto
