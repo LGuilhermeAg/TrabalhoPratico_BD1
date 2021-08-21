@@ -1,5 +1,6 @@
 <?php
 session_start();
+include('validaLogin.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,9 +12,10 @@ session_start();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 <body>
 
-	
 
 
+<h2>Ola, <?php echo ($_SESSION['user']);?></h2>
+<a href="logout.php"><button>sair</button></a>
 
 
 <section style="padding: 100px 0 100px 0">
