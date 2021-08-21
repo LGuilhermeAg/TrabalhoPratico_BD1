@@ -2,24 +2,6 @@
 session_start();
 include('validaLogin.php');
 
-// class pesquisarFuncionario{
-// 	public function porNome(nome){
-// 		global $pdo;
-// 		$query = $pdo->prepare("SELECT * FROM funcionario WHERE nome LIKE '%{$nome}%'");
-// 		$query->execute();
-// 		return $query->fetch();
-// 	}
-// }
-
-if(isset($_GET['nomeFuncionario'])){
-	$nomeFunc="%".trim($_GET['nomeFuncionario'])."%";
-	$dbh = new PDO('mysql:host=127.0.0.1;dbname=apurodb','root','');
-	$sth = $dbh->prepare('SELECT * FROM `funcionario` WHERE `nome` LIKE :nome');
-	$sth->bindParam(':nome',$nome,PDO::PARAM_STR);
-	$sth->execute();
-	$funcionarios=$sth->fetchAll(PDO::FETCH_ASSOC);
-}
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,16 +13,11 @@ if(isset($_GET['nomeFuncionario'])){
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 <body>
 <header class="w3-bar w3-theme">
-	<div class="w3-dropdown-hover">
-        <button class="w3-button w3-theme w3-padding-16" style="color:#000 !important; background-color:#f0f0f0 !important">Ola, <?php echo ($_SESSION['user']);?> <i class="fa fa-caret-down"></i></button>
-        <div class="w3-dropdown-content w3-bar-block w3-border" style="margin-top: 0px">
-          <a href="logout.php" class="w3-bar-item w3-button">Sair</a>
-        </div>
-    </div>
-	<a href="painelFuncionarios.php" class="w3-bar-item w3-button testbtn w3-padding-16">Funcionarios</a>
+	<a href="painel.php" class="w3-bar-item w3-button testbtn w3-padding-16">Página Inicial</a>
+	<a href="painelFuncionarios.php" class="w3-bar-item w3-button testbtn w3-padding-16" >Funcionarios</a>
     <a href="painelClientes.php" class="w3-bar-item w3-button testbtn w3-padding-16">Clientes</a>
     <a href="painelProdutos.php" class="w3-bar-item w3-button testbtn w3-padding-16">Produtos</a>
-    <a href="painelFornecedores.php" class="w3-bar-item w3-button testbtn w3-padding-16">Fornecedores</a>
+    <a href="painelFornecedores.php" class="w3-bar-item w3-button testbtn w3-padding-16"style="color:#000 !important; background-color:#f0f0f0 !important">Fornecedores</a>
 </header>
 
 
@@ -52,20 +29,20 @@ if(isset($_GET['nomeFuncionario'])){
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4" action="painelFuncionarios.php" method="GET">
+<form class="w3-container w3-card-4" action="painel.php#funcionarios" method="GET">
   <h2>Pesquisar informações de funcionários:</h2>
   <div class="w3-section">      
     <input class="w3-input" type="text" name="nomeFuncionario">
     <label>Nome</label>
   </div>
-  <!-- <div class="w3-section">      
+  <div class="w3-section">      
     <input class="w3-input" type="text" name="cpfFuncionario">
     <label>cpf</label>
   </div>
   <div class="w3-section">      
     <input class="w3-input" type="text" name="cargoFuncionario">
     <label>cargo</label>
-  </div> -->
+  </div>
   <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
   <br><br>
 
@@ -131,22 +108,20 @@ if(isset($_GET['nomeFuncionario'])){
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4" action="painelClientes.php" method="GET">
-  <h2>Pesquisar informações de Clientes:</h2>
+<form class="w3-container w3-card-4">
+  <h2>Pesquise o Cliente desejado:</h2>
   <div class="w3-section">      
-    <input class="w3-input" type="text" name="nomeCliente">
+    <input class="w3-input" type="text" required>
     <label>Nome</label>
   </div>
   <div class="w3-section">      
-    <input class="w3-input" type="text" name="cpfCliente">
+    <input class="w3-input" type="text" required>
     <label>cpf</label>
   </div>
   <div class="w3-section">      
-    <input class="w3-input" type="text" name="cidadeCliente">
-    <label>cidade</label>
-  </div>
-  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
-  <br><br>
+    <input class="w3-input" type="text" required>
+    <label>Cidade</label>
+  </div><br><br>
 
   
 </form>

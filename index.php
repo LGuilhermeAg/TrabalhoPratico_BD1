@@ -16,10 +16,9 @@ session_start();
   <button class="" onclick="w3_close()" style="background: none; margin-top: -5%;margin-left: 80%;cursor: pointer;position: absolute; outline: none; background-color: rgba(250,250,250,.75);border-radius:5px !important;font-size: .75em !important; border: none; padding: 5px 10px 5px 10px">Fechar <i class="fa fa-remove"></i></button>
   <center><h1 class="w3-xxxlarge w3-text-theme">Apuro Limpeza</h1><hr style="width: 50vw;">
   
-  <a href="#" class="w3-bar-item w3-button" style="background: none;text-align: center;">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button" style="background: none;text-align: center;">Link 2</a>
+  
   <a href="#" class="w3-bar-item w3-button" style="background: none;text-align: center;">Link 3</a>
-  <a  onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button" style="background: none;text-align: center;">Login</a></center>
+  <a  onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button" style="background: none;text-align: center;">Área Restrita</a></center>
 </nav>
 
 
