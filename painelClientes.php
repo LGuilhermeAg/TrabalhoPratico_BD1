@@ -88,9 +88,6 @@ $clientes=$sth->fetchAll(PDO::FETCH_ASSOC);
       if(empty($clientes)){
       	echo '<br><ul class="w3-ul w3-margin-bottom"> 
           <li><i class="fas fa-map-marker-alt"></i>Não foram encontrados dados referentes a esta busca</li>
-          <li>CPF: </li>
-          <li>Fidelidade: </li>
-          <li>Telefone:</li>
         </ul>';
       }else{
       	foreach($clientes as $cliente){
@@ -102,9 +99,10 @@ $clientes=$sth->fetchAll(PDO::FETCH_ASSOC);
               <li>Telefone: <?php echo $cliente['telefone'];?></li>
             </ul>
             <div class="w3-bar w3-theme">
-              <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
+              <a href="apagar.php?table=cliente&clausula=cpf&chave=<?php echo $cliente['cpf'];?>&from=painelClientes.php?nomeCliente=" class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</a>
               <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
             </div>
+            <hr>
             <?php
       	}
       }

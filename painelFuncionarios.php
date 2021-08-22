@@ -87,23 +87,21 @@ $funcionarios=$sth->fetchAll(PDO::FETCH_ASSOC);
       if(empty($funcionarios)){
       	echo '<br><ul class="w3-ul w3-margin-bottom"> 
           <li><i class="fas fa-map-marker-alt"></i>Não foram encontrados dados referentes a esta busca</li>
-          <li>CPF: </li>
-          <li>Cargo: </li>
-          <li>Telefone:</li>
         </ul>';
       }else{
       	foreach($funcionarios as $funcionario){
       		?>
       		<br><ul class="w3-ul w3-margin-bottom"> 
-              <li><i class="fas fa-map-marker-alt"></i>Funcionario <?php echo $funcionario['nome'];?>: </li>
+              <li><i class="fas fa-map-marker-alt"></i>Informações sobre <?php echo $funcionario['nome'];?>: </li>
               <li>CPF: <?php echo $funcionario['cpf'];?></li>
               <li>Cargo: <?php echo $funcionario['cargo'];?></li>
               <li>Telefone: <?php echo $funcionario['telefone'];?></li>
             </ul>
             <div class="w3-bar w3-theme">
-              <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
+              <a href="apagar.php?table=funcionario&clausula=cpf&chave=<?php echo $funcionario['cpf'];?>&from=painelFuncionarios.php?nomeFuncionario=" class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</a>
               <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
             </div>
+            <hr>
             <?php
       	}
       }

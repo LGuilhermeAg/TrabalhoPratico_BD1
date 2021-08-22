@@ -185,16 +185,21 @@ if(isset($_GET['nomeFuncionario'])){
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4">
-  <h2>Pesquise o produto desejado:</h2>
+<form class="w3-container w3-card-4" action="painelProdutos.php" method="GET">
+  <h2>Pesquisar informações de Produtos:</h2>
   <div class="w3-section">      
-    <input class="w3-input" type="text" required>
+    <input class="w3-input" type="text" name="nomeProduto">
     <label>Nome</label>
   </div>
   <div class="w3-section">      
-    <input class="w3-input" type="text" required>
+    <input class="w3-input" type="text" name="marcaProduto">
     <label>Marca</label>
   </div>
+  <div class="w3-section">      
+    <input class="w3-input" type="text" name="rendimentoProduto">
+    <label>Rendimento</label>
+  </div>
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
   <br><br>
 
   
@@ -235,16 +240,21 @@ if(isset($_GET['nomeFuncionario'])){
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4">
-  <h2>Pesquise o fornecedor desejado:</h2>
+<form class="w3-container w3-card-4" action="painelFornecedores.php" method="GET">
+  <h2>Pesquisar informações de Fornecedores:</h2>
   <div class="w3-section">      
-    <input class="w3-input" type="text" required>
+    <input class="w3-input" type="text" name="nomeFornecedor">
     <label>Nome</label>
   </div>
   <div class="w3-section">      
-    <input class="w3-input" type="text" required>
+    <input class="w3-input" type="text" name="localFornecedor">
+    <label>Localidade</label>
+  </div>
+  <div class="w3-section">      
+    <input class="w3-input" type="text" name="cnpjFornecedor">
     <label>CNPJ</label>
   </div>
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
   <br><br>
 
   
