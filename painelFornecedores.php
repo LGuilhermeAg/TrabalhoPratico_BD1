@@ -2,23 +2,30 @@
 session_start();
 include('validaLogin.php');
 
-// class pesquisarFuncionario{
-// 	public function porNome(nome){
-// 		global $pdo;
-// 		$query = $pdo->prepare("SELECT * FROM funcionario WHERE nome LIKE '%{$nome}%'");
-// 		$query->execute();
-// 		return $query->fetch();
-// 	}
-// }
 
-if(isset($_GET['nomeFornecedor'])){
+$dbh=new PDO('mysql:host=127.0.0.1;dbname=apurodb','root','');
+//string base para mostrar todos os funcionarios
+$sth=$dbh->prepare('SELECT * FROM `fornecedor` ORDER BY localidade DESC');
+if(!empty($_GET['nomeFornecedor'])){
 	$nome="%".trim($_GET['nomeFornecedor'])."%";
-	$dbh = new PDO('mysql:host=127.0.0.1;dbname=apurodb','root','');
-	$sth = $dbh->prepare('SELECT * FROM `fornecedor` WHERE `nome` LIKE :nome');
-	$sth->bindParam(':nome',$nome,PDO::PARAM_STR);
-	$sth->execute();
-	$fornecedores=$sth->fetchAll(PDO::FETCH_ASSOC);
+	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `nome` LIKE :nome ORDER BY localidade');
+	$sth->bindParam(':nome', $nome, PDO::PARAM_STR);
 }
+if(!empty($_GET['cnpjFornecedor'])){
+	$cnpj="%".trim($_GET['cnpjFornecedor'])."%";
+	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `cnpj` LIKE :cnpj');
+	$sth->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
+}
+if(!empty($_GET['localFornecedor'])){
+	$localidade="%".trim($_GET['localFornecedor'])."%";
+	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `localidade` LIKE :localidade ORDER BY id');
+	$sth->bindParam(':localidade', $localidade, PDO::PARAM_STR);
+}
+//executa uma das tres strings ou a string padrão
+$sth->execute();
+//armazena todos os funcionarios resultantes de qualquer uma das consultas
+$fornecedores=$sth->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 <!DOCTYPE html>
@@ -47,25 +54,22 @@ if(isset($_GET['nomeFornecedor'])){
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4" action="painelFornecedores.php" method="GET">
+<div class="w3-container w3-card-4" style="padding-bottom: 2rem">
   <h2>Pesquisar informações de Fornecedores:</h2>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="nomeFornecedor">
-    <label>Nome</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="localFornecedor">
-    <label>Localidade</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="cnpjFornecedor">
-    <label>CNPJ</label>
-  </div>
-  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
-  <br><br>
-
+  <form class="w3-section" action="painelFornecedores.php" method="GET">      
+    <input class="w3-input" type="text" name="nomeFornecedor" placeholder="Nome">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Nome</button>
+  </form>
+  <form class="w3-section" action="painelFornecedores.php" method="GET">      
+    <input class="w3-input" type="text" name="localFornecedor" placeholder="Cidade, estado..">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Localidade</button>
+  </form>
+  <form class="w3-section" action="painelFornecedores.php" method="GET">      
+    <input class="w3-input" type="text" name="cnpjFornecedor" placeholder="CNPJ">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por CNPJ</button>
+  </form>
   
-</form>
+</div>
 </div>
 <div class="w3-half">
 <div class="w3-card-4 w3-container">
@@ -103,6 +107,7 @@ if(isset($_GET['nomeFornecedor'])){
               <li>CNPJ: <?php echo $fornecedor['cnpj'];?></li>
               <li>Localidade: <?php echo $fornecedor['localidade'];?></li>
               <li>Contato: <?php echo $fornecedor['contato'];?></li>
+              <li>Código: <?php echo $fornecedor['id'];?></li>
             </ul>
             <div class="w3-bar w3-theme">
               <a href="apagar.php?table=fornecedor&clausula=cnpj&chave=<?php echo $fornecedor['cnpj'];?>&from=painelFornecedores.php?nomeFornecedor=" class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</a>

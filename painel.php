@@ -46,251 +46,103 @@ if(isset($_GET['nomeFuncionario'])){
 
 
 <section style="padding: 100px 0 100px 0" id="funcionarios">
-    <h2 class="w3-center">Gerenciamento de Funcionários</h2><br><br>
-</div>
 
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4" action="painelFuncionarios.php" method="GET">
+<div class="w3-container w3-card-4" style="padding-bottom: 2rem">
   <h2>Pesquisar informações de funcionários:</h2>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="nomeFuncionario">
-    <label>Nome</label>
-  </div>
-  <!-- <div class="w3-section">      
-    <input class="w3-input" type="text" name="cpfFuncionario">
-    <label>cpf</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="cargoFuncionario">
-    <label>cargo</label>
-  </div> -->
-  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
-  <br><br>
-
-  
-</form>
+  <form class="w3-section">      
+    <input class="w3-input" type="text" name="nomeFuncionario" placeholder="Nome">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Nome</button>
+  </form>
+  <form class="w3-section" action="painelFuncionarios.php" method="GET">      
+    <input class="w3-input" type="text" name="cpfFuncionario" placeholder="CPF">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por CPF</button>
+  </form>
+  <form class="w3-section" action="painelFuncionarios.php" method="GET">      
+    <input class="w3-input" type="text" name="cargoFuncionario" placeholder="Cargo">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Cargo</button>
+  </form>
+</div>
 </div>
 <div class="w3-half">
-<div class="w3-card-4 w3-container">
-    <!-- <div class="w3-dropdown-hover">
-        <button class="w3-button w3-theme">Pesquisar <i class="fa fa-caret-down"></i></button>
-        <div class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="#" class="w3-bar-item w3-button">Link 1</a>
-          <a href="#" class="w3-bar-item w3-button">Link 2</a>
-          <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        </div>
-      </div> -->
-
-<!-- <ul class="w3-ul w3-margin-bottom"> 
-  <li><i class="fas fa-map-marker-alt"></i>Funcionario (# ): </li>
-  <li>CPF: </li>
-  <li>Cargo: </li>
-  <li>Telefone:</li>
-</ul> 
-
-    <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
-    </div>-->
-
-    <?php
-      if(empty($funcionarios)){
-      	echo '<br><ul class="w3-ul w3-margin-bottom"> 
-          <li><i class="fas fa-map-marker-alt"></i>Funcionario (# ): </li>
-          <li>CPF: </li>
-          <li>Cargo: </li>
-          <li>Telefone:</li>
-        </ul>';
-      }else{
-      	foreach($resultados as $result){
-      		?>
-      		<br><ul class="w3-ul w3-margin-bottom"> 
-              <li><i class="fas fa-map-marker-alt"></i>Funcionario <?php echo $result['nome'];?>: </li>
-              <li>CPF: <?php echo $result['cpf'];?></li>
-              <li>Cargo: <?php echo $result['cargo'];?></li>
-              <li>Telefone: <?php echo $result['telefone'];?></li>
-            </ul>
-            <div class="w3-bar w3-theme">
-              <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
-              <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
-            </div>
-            <?php
-      	}
-      }
-    ?>
-    
-<br>
-</section>
-
-<section style="padding: 100px 0 100px 0">
-    <h2 class="w3-center">Gerenciamento de Clientes</h2><br><br>
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-half">
-<form class="w3-container w3-card-4" action="painelClientes.php" method="GET">
+<div class="w3-container w3-card-4" style="padding-bottom: 2rem">
   <h2>Pesquisar informações de Clientes:</h2>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="nomeCliente">
-    <label>Nome</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="cpfCliente">
-    <label>cpf</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="cidadeCliente">
-    <label>cidade</label>
-  </div>
-  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
-  <br><br>
-
-  
-</form>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+    <input class="w3-input" type="text" name="nomeCliente" placeholder="Nome">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Nome</button>
+  </form>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+    <input class="w3-input" type="text" name="cpfCliente" placeholder="CPF">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por CPF</button>
+  </form>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+    <input class="w3-input" type="text" name="cidadeCliente" placeholder="Cidade">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Cidade</button>
+  </form>
+  <hr>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+  	<center><button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 15px;">Ou pesquisar por Fidelidade</button></center>
+  </form>
 </div>
-<div class="w3-half">
-<div class="w3-card-4 w3-container">
-    <div class="w3-dropdown-hover">
-        <button class="w3-button w3-theme">Pesquisar <i class="fa fa-caret-down"></i></button>
-        <div class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="#" class="w3-bar-item w3-button">Link 1</a>
-          <a href="#" class="w3-bar-item w3-button">Link 2</a>
-          <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        </div>
-      </div>
-<ul class="w3-ul w3-margin-bottom"> 
-  <li><i class="fas fa-map-marker-alt"></i>Cliente: (# ): </li>
-  <li>CPF: </li>
-  <li>Fidelidade: </li>
-  <li>Telefone:</li>
-</ul>
+</div>
 
-    <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Cadastrar</button>
-    </div>
-    
-<br>
 </section>
 
 
-<section style="padding: 100px 0 100px 0">
-    <h2 class="w3-center">Gerenciamento de Produtos</h2><br><br>
-</div>
+<section style="padding: 0 0 100px 0;margin-bottom:20vh">
 
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4" action="painelProdutos.php" method="GET">
+<div class="w3-container w3-card-4" style="padding-bottom: 2rem">
   <h2>Pesquisar informações de Produtos:</h2>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="nomeProduto">
-    <label>Nome</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="marcaProduto">
-    <label>Marca</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="rendimentoProduto">
-    <label>Rendimento</label>
-  </div>
-  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
-  <br><br>
-
-  
-</form>
+  <form class="w3-section" action="painelProdutos.php" method="GET">      
+    <input class="w3-input" type="text" name="marcaProduto" placeholder="Marca">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Marca</button>
+  </form>
+  <form class="w3-section" action="painelProdutos.php" method="GET">      
+    <input class="w3-input" type="text" name="rendProduto" placeholder="Rendimento">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Rendimento</button>
+  </form>
+  <form class="w3-section" action="painelProdutos.php" method="GET">      
+    <input class="w3-input" type="text" name="descProduto" placeholder="Funcao">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Funcao</button>
+  </form>
+  <form class="w3-section" action="painelProdutos.php" method="GET">      
+    <input class="w3-input" type="text" name="codProduto" placeholder="Codigo">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Código</button>
+  </form>
+  <hr>
+  <form class="w3-section" action="painelProdutos.php" method="GET">      
+  	<button type="submit" name="preco" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 15px;">ordenar por Preço</button>
+  </form>
+  <form class="w3-section" action="painelProdutos.php" method="GET">      
+  	<button type="submit" name="custo" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 15px;">ordenar por Custo</button>
+  </form>
+</div>
 </div>
 <div class="w3-half">
-<div class="w3-card-4 w3-container">
-    <div class="w3-dropdown-hover">
-        <button class="w3-button w3-theme">Pesquisar <i class="fa fa-caret-down"></i></button>
-        <div class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="#" class="w3-bar-item w3-button">Link 1</a>
-          <a href="#" class="w3-bar-item w3-button">Link 2</a>
-          <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        </div>
-      </div>
-<ul class="w3-ul w3-margin-bottom"> 
-  <li><i class="fas fa-map-marker-alt"></i>Produto (# ): </li>
-  <li>Nome: </li>
-  <li>Marca: </li>
-  <li>Rendimento:</li>
-</ul>
-
-    <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Cadastrar</button>
-    </div>
-    
-<br>
-</section>
-
-
-
-<section style="padding: 100px 0 300px 0">
-    <h2 class="w3-center">Gerenciamento de Fornecedores</h2><br><br>
-</div>
-
-<div class="w3-row-padding">
-
-<div class="w3-half">
-<form class="w3-container w3-card-4" action="painelFornecedores.php" method="GET">
+<div class="w3-container w3-card-4" style="padding-bottom: 2rem">
   <h2>Pesquisar informações de Fornecedores:</h2>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="nomeFornecedor">
-    <label>Nome</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="localFornecedor">
-    <label>Localidade</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="cnpjFornecedor">
-    <label>CNPJ</label>
-  </div>
-  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
-  <br><br>
-
+  <form class="w3-section" action="painelFornecedores.php" method="GET">      
+    <input class="w3-input" type="text" name="nomeFornecedor" placeholder="Nome">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Nome</button>
+  </form>
+  <form class="w3-section" action="painelFornecedores.php" method="GET">      
+    <input class="w3-input" type="text" name="localFornecedor" placeholder="Cidade, estado..">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Localidade</button>
+  </form>
+  <form class="w3-section" action="painelFornecedores.php" method="GET">      
+    <input class="w3-input" type="text" name="cnpjFornecedor" placeholder="CNPJ">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por CNPJ</button>
+  </form>
   
-</form>
 </div>
-<div class="w3-half">
-<div class="w3-card-4 w3-container">
-    <div class="w3-dropdown-hover">
-        <button class="w3-button w3-theme">Pesquisar <i class="fa fa-caret-down"></i></button>
-        <div class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="#" class="w3-bar-item w3-button">Link 1</a>
-          <a href="#" class="w3-bar-item w3-button">Link 2</a>
-          <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        </div>
-      </div>
-<ul class="w3-ul w3-margin-bottom"> 
-  <li><i class="fas fa-map-marker-alt"></i>Fornecedor (# ): </li>
-  <li>CNPJ: </li>
-  <li>Contato: </li>
-</ul>
+</div>
 
-    <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Cadastrar</button>
-    </div>
-    
-<br>
 </section>
-
-
-
-
-
-
-
 
 
 

@@ -2,16 +2,31 @@
 session_start();
 include('validaLogin.php');
 
-if(!isset($_GET['nomeCliente'])){
-	header('Location: painel.php');
-	exit;
-}
-$nome="%".trim($_GET['nomeCliente'])."%";
 $dbh=new PDO('mysql:host=127.0.0.1;dbname=apurodb','root','');
-$sth=$dbh->prepare('SELECT * FROM `cliente` WHERE `nome` LIKE :nome');
-$sth->bindParam(':nome', $nome, PDO::PARAM_STR);
+//string base para mostrar todos os funcionarios
+$sth=$dbh->prepare('SELECT * FROM `cliente` ORDER BY fidelidade DESC');
+if(!empty($_GET['nomeCliente'])){
+	$nome="%".trim($_GET['nomeCliente'])."%";
+	$sth=$dbh->prepare('SELECT * FROM `cliente` WHERE `nome` LIKE :nome ORDER BY cidade');
+	$sth->bindParam(':nome', $nome, PDO::PARAM_STR);
+}
+if(!empty($_GET['cpfCliente'])){
+	$cpf="%".trim($_GET['cpfCliente'])."%";
+	$sth=$dbh->prepare('SELECT * FROM `cliente` WHERE `cpf` LIKE :cpf ORDER BY cidade');
+	$sth->bindParam(':cpf', $cpf, PDO::PARAM_STR);
+}
+if(!empty($_GET['cidadeCliente'])){
+	$cidade="%".trim($_GET['cidadeCliente'])."%";
+	$sth=$dbh->prepare('SELECT * FROM `cliente` WHERE `cidade` LIKE :cidade ORDER BY fidelidade');
+	$sth->bindParam(':cidade', $cidade, PDO::PARAM_STR);
+}
+//executa uma das tres strings ou a string padrão
 $sth->execute();
+//armazena todos os funcionarios resultantes de qualquer uma das consultas
 $clientes=$sth->fetchAll(PDO::FETCH_ASSOC);
+
+
+
 
 
 ?>
@@ -41,25 +56,25 @@ $clientes=$sth->fetchAll(PDO::FETCH_ASSOC);
 <div class="w3-row-padding">
 
 <div class="w3-half">
-<form class="w3-container w3-card-4" action="painelClientes.php" method="GET">
+<div class="w3-container w3-card-4" style="padding-bottom: 2rem">
   <h2>Pesquisar informações de Clientes:</h2>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="nomeCliente">
-    <label>Nome</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="cpfCliente">
-    <label>cpf</label>
-  </div>
-  <div class="w3-section">      
-    <input class="w3-input" type="text" name="cidadeCliente">
-    <label>cidade</label>
-  </div>
-  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white">Pesquisar</button>
-  <br><br>
-
-  
-</form>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+    <input class="w3-input" type="text" name="nomeCliente" placeholder="Nome">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Nome</button>
+  </form>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+    <input class="w3-input" type="text" name="cpfCliente" placeholder="CPF">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por CPF</button>
+  </form>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+    <input class="w3-input" type="text" name="cidadeCliente" placeholder="Cidade">
+  <button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Pesquisar por Cidade</button>
+  </form>
+  <hr>
+  <form class="w3-section" action="painelClientes.php" method="GET">      
+  	<center><button type="submit" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 15px;">Ou pesquisar por Fidelidade</button></center>
+  </form>
+</div>
 </div>
 <div class="w3-half">
 <div class="w3-card-4 w3-container">
@@ -97,6 +112,7 @@ $clientes=$sth->fetchAll(PDO::FETCH_ASSOC);
               <li>CPF: <?php echo $cliente['cpf'];?></li>
               <li>Nível de fidelidade: <?php echo $cliente['fidelidade'];?></li>
               <li>Telefone: <?php echo $cliente['telefone'];?></li>
+              <li>Cidade: <?php echo $cliente['cidade'];?></li>
             </ul>
             <div class="w3-bar w3-theme">
               <a href="apagar.php?table=cliente&clausula=cpf&chave=<?php echo $cliente['cpf'];?>&from=painelClientes.php?nomeCliente=" class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</a>
