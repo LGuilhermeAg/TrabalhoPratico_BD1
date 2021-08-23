@@ -20,26 +20,8 @@ if(isset($_POST['cnpjFornecedor1'])){
 
 
 $dbh=new PDO('mysql:host=127.0.0.1;dbname=apurodb','root','');
-//string base para mostrar todos os funcionarios
 $sth=$dbh->prepare('SELECT * FROM `fornecedor` ORDER BY localidade DESC');
-// if(!empty($_GET['nomeFornecedor'])){
-// 	$nome="%".trim($_GET['nomeFornecedor'])."%";
-// 	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `nome` LIKE :nome ORDER BY localidade');
-// 	$sth->bindParam(':nome', $nome, PDO::PARAM_STR);
-// }
-// if(!empty($_GET['cnpjFornecedor'])){
-// 	$cnpj="%".trim($_GET['cnpjFornecedor'])."%";
-// 	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `cnpj` LIKE :cnpj');
-// 	$sth->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
-// }
-// if(!empty($_GET['localFornecedor'])){
-// 	$localidade="%".trim($_GET['localFornecedor'])."%";
-// 	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `localidade` LIKE :localidade ORDER BY id');
-// 	$sth->bindParam(':localidade', $localidade, PDO::PARAM_STR);
-// }
-//executa uma das tres strings ou a string padrão
 $sth->execute();
-//armazena todos os funcionarios resultantes de qualquer uma das consultas
 $fornecedores=$sth->fetchAll(PDO::FETCH_ASSOC);
 
 
@@ -161,26 +143,7 @@ if(isset($_SESSION['statusCadastro'])){
 </div>
 <div class="w3-half">
 <div class="w3-card-4 w3-container">
-    <!-- <div class="w3-dropdown-hover">
-        <button class="w3-button w3-theme">Pesquisar <i class="fa fa-caret-down"></i></button>
-        <div class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="#" class="w3-bar-item w3-button">Link 1</a>
-          <a href="#" class="w3-bar-item w3-button">Link 2</a>
-          <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        </div>
-      </div> -->
-
-<!-- <ul class="w3-ul w3-margin-bottom"> 
-  <li><i class="fas fa-map-marker-alt"></i>Funcionario (# ): </li>
-  <li>CPF: </li>
-  <li>Cargo: </li>
-  <li>Telefone:</li>
-</ul> 
-
-    <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
-    </div>-->
+   
 
     <?php
       if(empty($fornecedores)){

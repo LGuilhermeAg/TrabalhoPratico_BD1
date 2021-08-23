@@ -11,7 +11,7 @@ session_start();
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 <body>
 
-<!-- Side Navigation -->
+
 <nav class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none;background-image: linear-gradient(to bottom right, cyan, violet);" id="mySidebar">
   <button class="" onclick="w3_close()" style="background: none; margin-top: -5%;margin-left: 80%;cursor: pointer;position: absolute; outline: none; background-color: rgba(250,250,250,.75);border-radius:5px !important;font-size: .75em !important; border: none; padding: 5px 10px 5px 10px">Fechar <i class="fa fa-remove"></i></button>
   <center><h1 class="w3-xxxlarge w3-text-theme">Apuro Limpeza</h1><hr style="width: 50vw;">
@@ -23,10 +23,7 @@ session_start();
 
 
 
-<!-- Header -->
-<!-- <header class="w3-container w3-theme w3-padding" id="myHeader"style="background-image: url(apuro.png);background-repeat: no-repeat;background-size: cover; height: 200px">
-    <div class="w3-center">
-  </header> -->
+
 <header class="w3-container w3-theme w3-padding" id="myHeader" style="background-image: linear-gradient(to bottom right, cyan, violet);">
   <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button" style="opacity: .25;"></i> 
   <div class="w3-center">
@@ -38,7 +35,7 @@ session_start();
   </div>
 </header>
 
-<!-- Modal -->
+
 <div id="id01" class="w3-modal">
     <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:40vw;">
       <form action="login.php" method="POST" style="background-image: linear-gradient(to bottom right, cyan, violet">
@@ -108,41 +105,6 @@ session_start();
   <center><div class="w3-col w3-container m2"><p>E Muito Mais!!</p></div></center>
 </div>
 <br><br><br>
-<!-- <div class="w3-container">
-  <hr>
-  <div class="w3-center">
-    <h2>Tables</h2>
-    <p w3-class="w3-large">Don't worry. W3.CSS takes care of your tables.</p>
-  </div>
-<div class="w3-responsive w3-card-4">
-<table class="w3-table w3-striped w3-bordered">
-<thead>
-<tr class="w3-theme">
-  <th>First Name</th>
-  <th>Last Name</th>
-  <th>Points</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Jill</td>
-  <td>Smith</td>
-  <td>50</td>
-</tr>
-<tr class="w3-white">
-  <td>Eve</td>
-  <td>Jackson</td>
-  <td>94</td>
-</tr>
-<tr>
-  <td>Adam</td>
-  <td>Johnson</td>
-  <td>67</td>
-</tr>
-</tbody>
-</table>
-</div> -->
-
 <br><br>
 <h2 class="w3-center">Perguntas Frequentes</h2>
 <button onclick="myAccFunc('Demo1')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align" style="box-shadow: 0px 0 5px  lightgrey; text-align: center !important; background-color: white !important; color: black !important">Os produtos são de procedência?</button>
@@ -208,95 +170,20 @@ session_start();
 </div>
 </div>
 </div>
-<!-- 
-<div class="w3-container">
-<hr>
-<h2 class="w3-center">Navigation</h2>
-
-<div class="w3-bar w3-theme">
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">Home</a>
-  <a href="#" class="w3-bar-item w3-button w3-padding-16">Link 1</a>
-  <div class="w3-dropdown-hover">
-    <button class="w3-button w3-padding-16">
-      Dropdown <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-      <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 1</a>
-      <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 2</a>
-      <a href="javascript:void(0)" class="w3-bar-item w3-button">Link 3</a>
-    </div>
-  </div>
-</div> -->
   <br><br>
 <hr>
-<!-- <h2 class="w3-center">Tabs</h2>
-<div class="w3-border">
-<div class="w3-bar w3-theme">
-  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'London')">London</button>
-  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Paris')">Paris</button>
-  <button class="w3-bar-item w3-button testbtn w3-padding-16" onclick="openCity(event,'Tokyo')">Tokyo</button>
-</div>
-
-<div id="London" class="w3-container city w3-animate-opacity">
-  <h2>London</h2>
-  <p>London is the capital city of England.</p>
-  <p>It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
-</div>
-
-<div id="Paris" class="w3-container city w3-animate-opacity">
-  <h2>Paris</h2>
-  <p>Paris is the capital of France.</p> 
-  <p>The Paris area is one of the largest population centers in Europe, with more than 12 million inhabitants.</p>
-</div>
-
-<div id="Tokyo" class="w3-container city w3-animate-opacity">
-  <h2>Tokyo</h2>
-  <p>Tokyo is the capital of Japan.</p>
-  <p>It is the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.</p>
-</div>
-</div> -->
-
-
 <h2 class="w3-center">Nos Acompanhe!</h2>
 <div class="w3-center">
   <br>
   <a class="w3-button " style="border-bottom: 2px solid lightblue;">Facebook</a>
   <a class="w3-button" href="https://instagram.com/apurolimpeza" target="_blank" style="border-bottom: 2px solid violet;">Instagram</a>
   <br><br>
-  <!-- <a class="w3-button w3-circle w3-large w3-black"><i class="fa fa-plus"></i></a>
-  <a class="w3-button w3-circle w3-large w3-theme"><i class="fa fa-plus"></i></a>  
-  <a class="w3-button w3-circle w3-large w3-card-4"><i class="fa fa-plus"></i></a> -->
-</div>
+  </div>
 <br>
-<!-- <div class="w3-center">
-  <div class="w3-dropdown-hover">
-    <button class="w3-button w3-theme">Dropdown <i class="fa fa-caret-down"></i></button>
-    <div class="w3-dropdown-content w3-bar-block w3-border">
-      <a href="#" class="w3-bar-item w3-button">Link 1</a>
-      <a href="#" class="w3-bar-item w3-button">Link 2</a>
-      <a href="#" class="w3-bar-item w3-button">Link 3</a>
-    </div>
-  </div>
-</div> -->
+
 
 </div>
 
-
-<!-- <div class="w3-center">
-  <h2>Pagination</h2>
-  
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-      <a href="#" class="w3-bar-item w3-button w3-hover-theme">«</a>
-      <a href="#" class="w3-bar-item w3-button w3-theme w3-hover-theme">1</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-theme">2</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-theme">3</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-theme">4</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-theme">5</a>
-      <a href="#" class="w3-bar-item w3-button w3-hover-theme">»</a>
-    </div>
-  </div>
-</div> -->
 <br>
 
 <!-- Footer -->
@@ -315,9 +202,9 @@ session_start();
 
 
 
-<!-- Script for Sidebar, Tabs, Accordions, Progress bars and slideshows -->
+
 <script>
-// Side navigation
+
 function w3_open() {
   var x = document.getElementById("mySidebar");
   x.style.width = "100%";
@@ -329,7 +216,7 @@ function w3_close() {
   document.getElementById("mySidebar").style.display = "none";
 }
 
-// Tabs
+
 function openCity(evt, cityName) {
   var i;
   var x = document.getElementsByClassName("city");
@@ -347,7 +234,7 @@ function openCity(evt, cityName) {
 var mybtn = document.getElementsByClassName("testbtn")[0];
 mybtn.click();
 
-// Accordions
+
 function myAccFunc(id) {
   var x = document.getElementById(id);
   if (x.className.indexOf("w3-show") == -1) {
@@ -357,7 +244,7 @@ function myAccFunc(id) {
   }
 }
 
-// Slideshows
+
 var slideIndex = 1;
 
 function plusDivs(n) {
@@ -377,7 +264,7 @@ function showDivs(n) {
 
 showDivs(1);
 
-// Progress Bars
+
 function move() {
   var elem = document.getElementById("myBar");   
   var width = 5;

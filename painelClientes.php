@@ -78,26 +78,7 @@ $clientes=$sth->fetchAll(PDO::FETCH_ASSOC);
 </div>
 <div class="w3-half">
 <div class="w3-card-4 w3-container">
-    <!-- <div class="w3-dropdown-hover">
-        <button class="w3-button w3-theme">Pesquisar <i class="fa fa-caret-down"></i></button>
-        <div class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="#" class="w3-bar-item w3-button">Link 1</a>
-          <a href="#" class="w3-bar-item w3-button">Link 2</a>
-          <a href="#" class="w3-bar-item w3-button">Link 3</a>
-        </div>
-      </div> -->
-
-<!-- <ul class="w3-ul w3-margin-bottom"> 
-  <li><i class="fas fa-map-marker-alt"></i>Funcionario (# ): </li>
-  <li>CPF: </li>
-  <li>Cargo: </li>
-  <li>Telefone:</li>
-</ul> 
-
-    <div class="w3-bar w3-theme">
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</button>
-      <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
-    </div>-->
+   
 
     <?php
       if(empty($clientes)){

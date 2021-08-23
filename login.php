@@ -17,8 +17,6 @@ if($row==1){
 	$usuario=mysqli_fetch_assoc($result);
 	$_SESSION['user']=$usuario['nome'];
 	$_SESSION['msg']="";
-	// $_SESSION['nome']=$result['nome'];
-	// $_SESSION['nivel']=$result['nivel_acesso'];
 	header('Location: painel.php');
 	exit();
 }else{
