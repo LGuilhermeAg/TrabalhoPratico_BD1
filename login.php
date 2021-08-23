@@ -14,7 +14,8 @@ $query="SELECT * FROM funcionario WHERE email='{$user}' AND senha='{$senha}'";
 $result=mysqli_query($conexao,$query);
 $row=mysqli_num_rows($result);
 if($row==1){
-	$_SESSION['user']=$user;
+	$usuario=mysqli_fetch_assoc($result);
+	$_SESSION['user']=$usuario['nome'];
 	$_SESSION['msg']="";
 	// $_SESSION['nome']=$result['nome'];
 	// $_SESSION['nivel']=$result['nivel_acesso'];
