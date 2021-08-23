@@ -108,7 +108,7 @@ if(isset($_SESSION['statusCadastro'])){
         <span onclick="document.getElementById('id03').style.display='none'"
         class="w3-button w3-display-topright" style="color: rgba(0,0,0,.75); background-color: rgba(250,250,250,.25);">×</span>
         <h3 style=" color: black !important">Cadastro</h3>
-        <h5 style=" color: black !important">Insira os dados do produto a ser cadastrado:</h5>
+        <h5 style=" color: black !important">Insira os dados do fornecedor a ser cadastrado:</h5>
         
       </header>
       <div class="" style="padding: 5% 20% 5% 20%">

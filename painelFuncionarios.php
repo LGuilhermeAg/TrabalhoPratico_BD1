@@ -45,17 +45,69 @@ $funcionarios=$sth->fetchAll(PDO::FETCH_ASSOC);
     <a href="painelClientes.php" class="w3-bar-item w3-button testbtn w3-padding-16">Clientes</a>
     <a href="painelProdutos.php" class="w3-bar-item w3-button testbtn w3-padding-16">Produtos</a>
     <a href="painelFornecedores.php" class="w3-bar-item w3-button testbtn w3-padding-16">Fornecedores</a>
+    <?php if(isset($_SESSION['usuarioJaExiste'])){
+          if($_SESSION['usuarioJaExiste']){
+          echo '<a href="painelFuncionarios.php" style="background-color: darkred !important;" class="w3-bar-item w3-button testbtn w3-padding-16">Funcionário já existe!!</a>';
+          $_SESSION['usuarioJaExiste']=null;}
+    }
+    if(isset($_SESSION['produtoJaCadastrado'])){
+          if($_SESSION['produtoJaCadastrado']){
+          echo '<a href="painelProdutos.php" style="background-color: darkred !important;" class="w3-bar-item w3-button testbtn w3-padding-16">Produto já cadastrado!!</a>';
+          $_SESSION['usuarioJaExiste']=null;}
+    }
+if(isset($_SESSION['statusCadastro'])){
+          if($_SESSION['statusCadastro']){
+          echo '<a href="#" style="background-color: darkgreen !important;" class="w3-bar-item w3-button testbtn w3-padding-16">Cadastro realizado com sucesso!</a>';
+          $_SESSION['statusCadastro']=null;}
+    }
+    ?>
+</header>
+<center><a  onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Cadastrar novo funcionário</a></center>
+
+<div id="id01" class="w3-modal" style="padding: 1px 1px 1px 1px">
+    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:60vw;">
+      <form action="cadastro.php" method="POST" style="background-image: linear-gradient(to bottom right, cyan, violet">
+      <header class="w3-container w3-theme-l1" style="padding: 1rem 2rem 1rem 2rem; background: rgba(250,250,250,.25) !important;"> 
+        <span onclick="document.getElementById('id01').style.display='none'"
+        class="w3-button w3-display-topright" style="color: rgba(0,0,0,.75); background-color: rgba(250,250,250,.25);">×</span>
+        <h3 style=" color: black !important">Cadastro</h3>
+        <h5 style=" color: black !important">Insira os dados do(a) funcionário(a) a ser cadastrado:</h5>
+        
+      </header>
+      <div class="" style="padding: 5% 20% 5% 20%">
+        
+          <input type="text" name="nomeFuncionario" placeholder="Nome" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="cpfFuncionario" placeholder="CPF" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" data-mask="000.000.000-00" maxlength="11" autocomplete="off">
+          <input type="text" name="cargoFuncionario" placeholder="Cargo" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="telFuncionario" placeholder="Telefone pessoal" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="endFuncionario" placeholder="Endereço" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="email" name="email" placeholder="e-mail" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="password" name="senha" placeholder="senha" style=" padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <select name="nivelAcesso" style=" padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          	<option value="0">Nível de Acesso: Baixo</option>
+          	<option value="1">Nível de Acesso: Alto</option>
+          </select>
+        
+      </div>
+      <footer class="w3-container w3-theme-l1" style="padding: 0rem 2rem 5rem 2rem; background: none !important">
+        <center><button type="submit" style="width: 80%;border-radius: 50px;border: 1px solid grey;padding: 10px;">Salvar</button></center>
+      </footer>
+      </form>
+    </div>
+</div>
+
 </header>
 
 
 
-<section style="padding: 100px 0 100px 0" id="funcionarios">
+<section style="padding: 50px 0 100px 0" id="funcionarios">
     <h2 class="w3-center">Gerenciamento de Funcionários</h2><br><br>
 </div>
 
 <div class="w3-row-padding">
 
 <div class="w3-half">
+
 <div class="w3-container w3-card-4" style="padding-bottom: 2rem">
   <h2>Pesquisar informações de funcionários:</h2>
   <form class="w3-section" action="painelFuncionarios.php" method="GET">      
