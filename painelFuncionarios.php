@@ -2,6 +2,28 @@
 session_start();
 include('validaLogin.php');
 
+include("conect.php");
+if(isset($_POST['nomeFuncionario'])){
+	$nome=mysqli_real_escape_string($conexao, trim($_POST['nomeFuncionario']));
+	$cpf=mysqli_real_escape_string($conexao, trim($_POST['cpfFuncionario']));
+	$cargo=mysqli_real_escape_string($conexao, trim($_POST['cargoFuncionario']));
+	$telefone=mysqli_real_escape_string($conexao, trim($_POST['telFuncionario']));
+	$endereco=mysqli_real_escape_string($conexao, trim($_POST['endFuncionario']));
+	$email=mysqli_real_escape_string($conexao, trim($_POST['email']));
+	$senha=mysqli_real_escape_string($conexao, trim($_POST['senha']));
+	$nivel=mysqli_real_escape_string($conexao, trim($_POST['nivelAcesso']));
+	print_r($_POST);
+
+	$sql="UPDATE funcionario SET nome='$nome', cargo='$cargo', telefone='$telefone', endereco='$endereco', email='$email', senha='$senha', nivel_acesso=$nivel WHERE cpf=$cpf";
+	if($conexao->query($sql)===TRUE){
+		$_SESSION['statusCadastro']=true;
+	}
+	//$conexao->close();
+	header('Location: painelFuncionarios.php');
+	exit;
+}
+
+
 if(!isset($_GET)){
 	header('Location: painel.php');
 	exit;
@@ -72,6 +94,38 @@ if(isset($_SESSION['statusCadastro'])){
         class="w3-button w3-display-topright" style="color: rgba(0,0,0,.75); background-color: rgba(250,250,250,.25);">×</span>
         <h3 style=" color: black !important">Cadastro</h3>
         <h5 style=" color: black !important">Insira os dados do(a) funcionário(a) a ser cadastrado:</h5>
+        
+      </header>
+      <div class="" style="padding: 5% 20% 5% 20%">
+        
+          <input type="text" name="nomeFuncionario" placeholder="Nome" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="cpfFuncionario" placeholder="CPF" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" data-mask="000.000.000-00" maxlength="11" autocomplete="off">
+          <input type="text" name="cargoFuncionario" placeholder="Cargo" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="telFuncionario" placeholder="Telefone pessoal" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="endFuncionario" placeholder="Endereço" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="email" name="email" placeholder="e-mail" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="password" name="senha" placeholder="senha" style=" padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <select name="nivelAcesso" style=" padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          	<option value="0">Nível de Acesso: Baixo</option>
+          	<option value="1">Nível de Acesso: Alto</option>
+          </select>
+        
+      </div>
+      <footer class="w3-container w3-theme-l1" style="padding: 0rem 2rem 5rem 2rem; background: none !important">
+        <center><button type="submit" style="width: 80%;border-radius: 50px;border: 1px solid grey;padding: 10px;">Salvar</button></center>
+      </footer>
+      </form>
+    </div>
+</div>
+
+<div id="id05" class="w3-modal" style="padding: 1px 1px 1px 1px">
+    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:60vw;">
+      <form action="painelFuncionarios.php" method="POST" style="background-image: linear-gradient(to bottom right, cyan, violet">
+      <header class="w3-container w3-theme-l1" style="padding: 1rem 2rem 1rem 2rem; background: rgba(250,250,250,.25) !important;"> 
+        <span onclick="document.getElementById('id05').style.display='none'"
+        class="w3-button w3-display-topright" style="color: rgba(0,0,0,.75); background-color: rgba(250,250,250,.25);">×</span>
+        <h3 style=" color: black !important">Modificar</h3>
+        <h5 style=" color: black !important">Insira os dados do(a) funcionário(a) a ser alterado:</h5>
         
       </header>
       <div class="" style="padding: 5% 20% 5% 20%">
@@ -177,7 +231,8 @@ if(isset($_SESSION['statusCadastro'])){
             </ul>
             <div class="w3-bar w3-theme">
               <a href="apagar.php?table=funcionario&clausula=cpf&chave=<?php echo $funcionario['cpf'];?>&from=painelFuncionarios.php?nomeFuncionario=" class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</a>
-              <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
+
+              <a   onclick="document.getElementById('id05').style.display='block'" class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</a>
             </div>
             <hr>
             <?php

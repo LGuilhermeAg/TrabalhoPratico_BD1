@@ -40,7 +40,7 @@ if(isset($_SESSION['statusCadastro'])){
     }
     ?>
 </header>
-
+<center><a  onclick="document.getElementById('id04').style.display='block'" class="w3-bar-item w3-button testbtn w3-padding-16" style="background-color:rgba(0,0,0,.9);color: white; border-radius: 0 0 15px 15px;">Cadastrar nova venda</a></center>
 
 <div id="id01" class="w3-modal" style="padding: 1px 1px 1px 1px">
     <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:60vw;">
@@ -87,7 +87,7 @@ if(isset($_SESSION['statusCadastro'])){
       <div class="" style="padding: 5% 20% 5% 20%">
         
           <input type="text" name="marcaProduto" placeholder="Marca" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
-          <input type="text" name="descProduto" placeholder="Descrição/Função" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" data-mask="000.000.000-00" maxlength="11" autocomplete="off">
+          <input type="text" name="descProduto" placeholder="Descrição/Função" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="rendProduto" placeholder="Rendimento" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="custoProduto" placeholder="Custo Aquisição" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="precoProduto" placeholder="Preço de Venda" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
@@ -114,9 +114,34 @@ if(isset($_SESSION['statusCadastro'])){
       <div class="" style="padding: 5% 20% 5% 20%">
         
           <input type="text" name="cnpjFornecedor" placeholder="CNPJ" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
-          <input type="text" name="nomeFornecedor" placeholder="Razão Social" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" data-mask="000.000.000-00" maxlength="11" autocomplete="off">
+          <input type="text" name="nomeFornecedor" placeholder="Razão Social" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="localFornecedor" placeholder="Localidade" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="contatoFornecedor" placeholder="Contato" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          
+        
+      </div>
+      <footer class="w3-container w3-theme-l1" style="padding: 0rem 2rem 5rem 2rem; background: none !important">
+        <center><button type="submit" style="width: 80%;border-radius: 50px;border: 1px solid grey;padding: 10px;">Salvar</button></center>
+      </footer>
+      </form>
+    </div>
+</div>
+
+<div id="id04" class="w3-modal" style="padding: 1px 1px 1px 1px">
+    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:60vw;">
+      <form action="cadastro.php" method="POST" style="background-image: linear-gradient(to bottom right, cyan, violet">
+      <header class="w3-container w3-theme-l1" style="padding: 1rem 2rem 1rem 2rem; background: rgba(250,250,250,.25) !important;"> 
+        <span onclick="document.getElementById('id04').style.display='none'"
+        class="w3-button w3-display-topright" style="color: rgba(0,0,0,.75); background-color: rgba(250,250,250,.25);">×</span>
+        <h3 style=" color: black !important">Cadastro</h3>
+        <h5 style=" color: black !important">Insira os dados da nova venda</h5>
+        
+      </header>
+      <div class="" style="padding: 5% 20% 5% 20%">
+        
+          <input type="text" name="cpfCliente" placeholder="CPF do cliente" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="cpfVendedor" placeholder="CPF do vendedor" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" data-mask="000.000.000-00" maxlength="11" autocomplete="off">
+          <input type="text" name="codigoProduto" placeholder="Código do produto" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           
         
       </div>

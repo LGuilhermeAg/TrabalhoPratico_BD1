@@ -78,5 +78,21 @@ if(isset($_POST['cnpjFornecedor'])){
 	exit;
 }
 
+//---------------------------------
+if(isset($_POST['cpfVendedor'])){
+	$cpfc=mysqli_real_escape_string($conexao, trim($_POST['cpfCliente']));
+	$cpfv=mysqli_real_escape_string($conexao, trim($_POST['cpfVendedor']));
+	$cod=mysqli_real_escape_string($conexao, trim($_POST['codigoProduto']));
+	print_r($_POST);
+
+	$sql="INSERT INTO venda (cpf_cliente,cpf_vendedor,codigo_produto) VALUES (1990809685,1234567891,$cod)";
+	if($conexao->query($sql)===TRUE){
+		$_SESSION['statusCadastro']=true;
+	}
+	//$conexao->close();
+	header('Location: painel.php');
+	exit;
+}
+
 
 ?>

@@ -1,26 +1,42 @@
 <?php
 session_start();
 include('validaLogin.php');
+include("conect.php");
+if(isset($_POST['cnpjFornecedor1'])){
+	$cnpj=mysqli_real_escape_string($conexao, trim($_POST['cnpjFornecedor1']));
+	$nome=mysqli_real_escape_string($conexao, trim($_POST['nomeFornecedor1']));
+	$local=mysqli_real_escape_string($conexao, trim($_POST['localFornecedor1']));
+	$contato=mysqli_real_escape_string($conexao, trim($_POST['contatoFornecedor1']));
+	print_r($_POST);
+
+	$sql="UPDATE fornecedor SET nome='$nome', localidade='$local', contato='$contato' WHERE cnpj=$cnpj";
+	if($conexao->query($sql)===TRUE){
+		$_SESSION['statusCadastro']=true;
+	}
+	//$conexao->close();
+	header('Location: painelFornecedores.php');
+	exit;
+}
 
 
 $dbh=new PDO('mysql:host=127.0.0.1;dbname=apurodb','root','');
 //string base para mostrar todos os funcionarios
 $sth=$dbh->prepare('SELECT * FROM `fornecedor` ORDER BY localidade DESC');
-if(!empty($_GET['nomeFornecedor'])){
-	$nome="%".trim($_GET['nomeFornecedor'])."%";
-	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `nome` LIKE :nome ORDER BY localidade');
-	$sth->bindParam(':nome', $nome, PDO::PARAM_STR);
-}
-if(!empty($_GET['cnpjFornecedor'])){
-	$cnpj="%".trim($_GET['cnpjFornecedor'])."%";
-	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `cnpj` LIKE :cnpj');
-	$sth->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
-}
-if(!empty($_GET['localFornecedor'])){
-	$localidade="%".trim($_GET['localFornecedor'])."%";
-	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `localidade` LIKE :localidade ORDER BY id');
-	$sth->bindParam(':localidade', $localidade, PDO::PARAM_STR);
-}
+// if(!empty($_GET['nomeFornecedor'])){
+// 	$nome="%".trim($_GET['nomeFornecedor'])."%";
+// 	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `nome` LIKE :nome ORDER BY localidade');
+// 	$sth->bindParam(':nome', $nome, PDO::PARAM_STR);
+// }
+// if(!empty($_GET['cnpjFornecedor'])){
+// 	$cnpj="%".trim($_GET['cnpjFornecedor'])."%";
+// 	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `cnpj` LIKE :cnpj');
+// 	$sth->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
+// }
+// if(!empty($_GET['localFornecedor'])){
+// 	$localidade="%".trim($_GET['localFornecedor'])."%";
+// 	$sth=$dbh->prepare('SELECT * FROM `fornecedor` WHERE `localidade` LIKE :localidade ORDER BY id');
+// 	$sth->bindParam(':localidade', $localidade, PDO::PARAM_STR);
+// }
 //executa uma das tres strings ou a string padrão
 $sth->execute();
 //armazena todos os funcionarios resultantes de qualquer uma das consultas
@@ -77,6 +93,33 @@ if(isset($_SESSION['statusCadastro'])){
           <input type="text" name="nomeFornecedor" placeholder="Razão Social" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" data-mask="000.000.000-00" maxlength="11" autocomplete="off">
           <input type="text" name="localFornecedor" placeholder="Localidade" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="contatoFornecedor" placeholder="Contato" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          
+        
+      </div>
+      <footer class="w3-container w3-theme-l1" style="padding: 0rem 2rem 5rem 2rem; background: none !important">
+        <center><button type="submit" style="width: 80%;border-radius: 50px;border: 1px solid grey;padding: 10px;">Salvar</button></center>
+      </footer>
+      </form>
+    </div>
+</div>
+
+
+<div id="id07" class="w3-modal" style="padding: 1px 1px 1px 1px">
+    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:60vw;">
+      <form action="painelFornecedores.php" method="POST" style="background-image: linear-gradient(to bottom right, cyan, violet">
+      <header class="w3-container w3-theme-l1" style="padding: 1rem 2rem 1rem 2rem; background: rgba(250,250,250,.25) !important;"> 
+        <span onclick="document.getElementById('id07').style.display='none'"
+        class="w3-button w3-display-topright" style="color: rgba(0,0,0,.75); background-color: rgba(250,250,250,.25);">×</span>
+        <h3 style=" color: black !important">Modificar</h3>
+        <h5 style=" color: black !important">Insira os dados do fornecedor a ser alterado:</h5>
+        
+      </header>
+      <div class="" style="padding: 5% 20% 5% 20%">
+        
+          <input type="text" name="cnpjFornecedor1" placeholder="CNPJ" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="nomeFornecedor1" placeholder="Razão Social" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" >
+          <input type="text" name="localFornecedor1" placeholder="Localidade" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="contatoFornecedor1" placeholder="Contato" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           
         
       </div>
@@ -156,7 +199,7 @@ if(isset($_SESSION['statusCadastro'])){
             </ul>
             <div class="w3-bar w3-theme">
               <a href="apagar.php?table=fornecedor&clausula=cnpj&chave=<?php echo $fornecedor['cnpj'];?>&from=painelFornecedores.php?nomeFornecedor=" class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</a>
-              <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
+              <button onclick="document.getElementById('id07').style.display='block'" class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
             </div>
             <hr>
             <?php

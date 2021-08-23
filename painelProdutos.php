@@ -1,6 +1,24 @@
 <?php
 session_start();
 include('validaLogin.php');
+include("conect.php");
+if(isset($_POST['codProduto'])){
+	$cod=mysqli_real_escape_string($conexao, trim($_POST['codProduto']));
+	$marca=mysqli_real_escape_string($conexao, trim($_POST['marcaProduto']));
+	$descricao=mysqli_real_escape_string($conexao, trim($_POST['descProduto']));
+	$custoproduto=mysqli_real_escape_string($conexao, trim($_POST['custoProduto']));
+	$precoproduto=mysqli_real_escape_string($conexao, trim($_POST['precoProduto']));
+	$rendproduto=mysqli_real_escape_string($conexao, trim($_POST['rendProduto']));
+	print_r($_POST);
+
+	$sql="UPDATE produto SET marca='$marca', descricao='$descricao', rendimento='$rendproduto', custo=$custoproduto, preco_venda=$precoproduto WHERE codigo_prod=$cod";
+	if($conexao->query($sql)===TRUE){
+		$_SESSION['statusCadastro']=true;
+	}
+	//$conexao->close();
+	header('Location: painelProdutos.php');
+	exit;
+}
 $dbh=new PDO('mysql:host=127.0.0.1;dbname=apurodb','root','');
 //string base para mostrar todos os funcionarios
 $sth=$dbh->prepare('SELECT * FROM `produto` ORDER BY preco_venda DESC');
@@ -77,6 +95,34 @@ if(isset($_SESSION['statusCadastro'])){
       </header>
       <div class="" style="padding: 5% 20% 5% 20%">
         
+          <input type="text" name="marcaProduto" placeholder="Marca" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="descProduto" placeholder="Descrição/Função" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="rendProduto" placeholder="Rendimento" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="custoProduto" placeholder="Custo Aquisição" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="precoProduto" placeholder="Preço de Venda" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          
+        
+      </div>
+      <footer class="w3-container w3-theme-l1" style="padding: 0rem 2rem 5rem 2rem; background: none !important">
+        <center><button type="submit" style="width: 80%;border-radius: 50px;border: 1px solid grey;padding: 10px;">Salvar</button></center>
+      </footer>
+      </form>
+    </div>
+</div>
+
+<div id="id06" class="w3-modal" style="padding: 1px 1px 1px 1px">
+    <div class="w3-modal-content w3-card-4 w3-animate-top" style="width:60vw;">
+      <form action="painelProdutos.php" method="POST" style="background-image: linear-gradient(to bottom right, cyan, violet">
+      <header class="w3-container w3-theme-l1" style="padding: 1rem 2rem 1rem 2rem; background: rgba(250,250,250,.25) !important;"> 
+        <span onclick="document.getElementById('id06').style.display='none'"
+        class="w3-button w3-display-topright" style="color: rgba(0,0,0,.75); background-color: rgba(250,250,250,.25);">×</span>
+        <h3 style=" color: black !important">Modificar</h3>
+        <h5 style=" color: black !important">Insira os dados do produto a ser alterado:</h5>
+        
+      </header>
+      <div class="" style="padding: 5% 20% 5% 20%">
+        
+          <input type="number" name="codProduto" placeholder="Código do produto" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="marcaProduto" placeholder="Marca" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
           <input type="text" name="descProduto" placeholder="Descrição/Função" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" data-mask="000.000.000-00" maxlength="11" autocomplete="off">
           <input type="text" name="rendProduto" placeholder="Rendimento" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
@@ -165,7 +211,7 @@ if(isset($_SESSION['statusCadastro'])){
       		?>
       		<br><ul class="w3-ul w3-margin-bottom"> 
               <li><i class="fas fa-map-marker-alt"></i>Informações sobre <?php echo $produto['marca'];?>: </li>
-              <li>Descricao: <?php echo $produto['descricao'];?></li>
+              <li>Descricao: <?php echo utf8_encode($produto['descricao']);?></li>
               <li>Rendimento: <?php echo $produto['rendimento'];?></li>
               <li>Código: <?php echo $produto['codigo_prod'];?></li>
               <li>Custo: R$<?php echo $produto['custo'];?></li>
@@ -181,7 +227,7 @@ if(isset($_SESSION['statusCadastro'])){
             </ul>
             <div class="w3-bar w3-theme">
               <a href="apagar.php?table=produto&clausula=codigo_prod&chave=<?php echo $produto['codigo_prod'];?>&from=painelProdutos.php?nomeProduto=" class="w3-bar-item w3-button testbtn w3-padding-16">Apagar</a>
-              <button class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
+              <button onclick="document.getElementById('id06').style.display='block'" class="w3-bar-item w3-button testbtn w3-padding-16">Modificar</button>
             </div><hr>
             <?php
       	}
