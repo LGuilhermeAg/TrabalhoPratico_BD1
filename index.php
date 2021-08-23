@@ -16,8 +16,6 @@ session_start();
   <button class="" onclick="w3_close()" style="background: none; margin-top: -5%;margin-left: 80%;cursor: pointer;position: absolute; outline: none; background-color: rgba(250,250,250,.75);border-radius:5px !important;font-size: .75em !important; border: none; padding: 5px 10px 5px 10px">Fechar <i class="fa fa-remove"></i></button>
   <center><h1 class="w3-xxxlarge w3-text-theme">Apuro Limpeza</h1><hr style="width: 50vw;">
   
-  
-  <a href="#" class="w3-bar-item w3-button" style="background: none;text-align: center;">Link 3</a>
   <a  onclick="document.getElementById('id01').style.display='block'" class="w3-bar-item w3-button" style="background: none;text-align: center;">Área Restrita</a></center>
 </nav>
 
@@ -110,7 +108,7 @@ session_start();
 <button onclick="myAccFunc('Demo1')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align" style="box-shadow: 0px 0 5px  lightgrey; text-align: center !important; background-color: white !important; color: black !important">Os produtos são de procedência?</button>
 <div id="Demo1" class="w3-hide">
   <div class="w3-container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Oferecemos produtos das melhores fábricas da industria de limpeza, pelo melhor preço!</p>
   </div>
 </div>
 <button onclick="myAccFunc('Demo2')" class="w3-padding-16 w3-theme w3-button w3-block w3-left-align"  style="text-align: center !important; box-shadow: 0px 0 5px  lightgrey;background-color: white !important; color: black !important">Os produtos são de fabricação própria ou revenda?</button>

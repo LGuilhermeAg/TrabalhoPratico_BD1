@@ -86,11 +86,11 @@ if(isset($_SESSION['statusCadastro'])){
       </header>
       <div class="" style="padding: 5% 20% 5% 20%">
         
-          <input type="text" name="marcaProduto" placeholder="Marca" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="marcaProduto" placeholder="Marca" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" autocomplete="none">
           <input type="text" name="descProduto" placeholder="Descrição/Função" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
-          <input type="text" name="rendProduto" placeholder="Rendimento" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="rendProduto" placeholder="Rendimento" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" autocomplete="none">
           <input type="text" name="custoProduto" placeholder="Custo Aquisição" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
-          <input type="text" name="precoProduto" placeholder="Preço de Venda" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey">
+          <input type="text" name="precoProduto" placeholder="Preço de Venda" style="padding: 10px; margin: 10px; border-radius: 50px; width: 100%; border: 1px solid grey" autocomplete="none">
           
         
       </div>
